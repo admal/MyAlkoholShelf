@@ -10,7 +10,7 @@ namespace MyAlkoholShelf.Entity
     {
         public virtual string Name { get; set; }
         public virtual string Symbol { get; set; }
-        public virtual ISet<User_IngredientUnit> Users { get; set; }
+
         public virtual ISet<Ingredient_IngredientUnit> Ingredients { get; set; }
     }
 
@@ -22,8 +22,8 @@ namespace MyAlkoholShelf.Entity
             {
                 b.Property(x => x.Name);
                 b.Property(x => x.Symbol);
-                b.HasMany(x => x.Users).WithOne(x => x.IngredientUnit);
-            })
+                b.HasMany(x => x.Ingredients).WithOne(x => x.IngredientUnit);
+            });
         }
     }
 }

@@ -17,7 +17,7 @@ namespace MyAlkoholShelf.Entity
         public User()
         {
             AlkoholRecipeDefinitions = ISetHelpers.EnsureExists(AlkoholRecipeDefinitions);
-            UserIngredients = ISetHelpers.EnsureExists(UserIngredients);
+            Ingredients = ISetHelpers.EnsureExists(Ingredients);
         }
 
         public virtual string UserName { get; set; }
@@ -26,7 +26,7 @@ namespace MyAlkoholShelf.Entity
         public virtual string Email{ get; set; }
 
         public virtual ISet<AlkoholRecipeDefinition> AlkoholRecipeDefinitions{ get; set; }
-        public virtual ISet<Ingredient> UserIngredients { get; set; }
+        public virtual ISet<Ingredient> Ingredients { get; set; }
     }
 
     public class UserMapping : EntityClassMapping<User>
@@ -42,12 +42,10 @@ namespace MyAlkoholShelf.Entity
                 b.Property(x => x.Email);
 
                 b.HasMany(x => x.AlkoholRecipeDefinitions)
-                    .WithOne(x => x.CreatedBy)
-                    .HasForeignKey(x => x.Id);
+                    .WithOne(x => x.CreatedBy);
 
-                b.HasMany(x => x.UserIngredients)
-                    .WithOne(x => x.CreatedBy)
-                    .HasForeignKey(x => x.Id);
+                b.HasMany(x => x.Ingredients)
+                    .WithOne(x => x.CreatedBy);
             });
         }
     }

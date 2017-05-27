@@ -1,0 +1,18 @@
+﻿@model IList<MyAlcoholShelf.Web.Models.AlkoholInstanceViewModel>
+
+@{
+    ViewBag.Title = "Alkohole";
+    Layout = "_Layout";
+}
+
+<h2>Alkohole</h2>
+<ul>
+    @foreach (var alkohol in Model)
+    {
+        <text>
+            <li>
+                @alkohol.Name : @alkohol.Quantity
+            </li>
+        </text>
+    }
+</ul>

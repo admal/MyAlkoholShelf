@@ -21,6 +21,7 @@ namespace MyAlkoholShelf.Entity
                 b.Property(x => x.CreatedTime);
                 b.Property(x => x.ModifiedTime);
                 b.Property(x => x.Name);
+                b.HasOne(x => x.CreatedBy).WithMany(x => x.Ingredients);
                 b.HasMany(x => x.IngredientUnits).WithOne(x => x.Ingredient);
             });
         }

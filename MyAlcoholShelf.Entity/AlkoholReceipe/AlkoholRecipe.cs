@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ namespace MyAlkoholShelf.Entity
         /// <summary>
         /// Ile ma alkohol leżakować
         /// </summary>
+        [NotMapped]
         public virtual TimeSpan PreparationPeriod
         {
             get { return TimeSpan.FromTicks(PreparationPeriodTicks); }
@@ -44,7 +46,7 @@ namespace MyAlkoholShelf.Entity
                     .WithMany(x => x.AlkoholRecipies);
 
                 b.HasMany(x => x.AlkoholInstances)
-                    .WithOne(x => x.AlkoholReceipe);
+                    .WithOne(x => x.AlkoholRecipe);
                 b.HasMany(x => x.Ingredients)
                     .WithOne(x => x.AlkoholRecipe);
             });

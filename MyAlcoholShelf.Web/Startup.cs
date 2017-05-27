@@ -35,7 +35,7 @@ namespace MyAlcoholShelf.Web
             services.AddDbContext<EntityAlkoholShelfContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddTransient<IReadRepository, TmpRepo>();
+            services.AddTransient<IReadRepository, MainRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
