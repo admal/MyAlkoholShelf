@@ -1,0 +1,54 @@
+﻿@model System.Collections.Generic.List<MyAlcoholShelf.Web.Models.AlkoholRecipeViewModel>
+
+@{
+    ViewBag.Title = "Your recipies";
+    Layout = "_Layout";
+
+
+}
+
+<h2>Your recipies</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th># Versions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var recipe in Model)
+    {
+        <text>
+            <tr>
+                <td>
+                    @recipe.Name
+                </td>
+                <td>
+                    @recipe.Versions.Count
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table>
+                        @foreach (var version in recipe.Versions)
+                        {
+                            <text>
+                                <tr>
+                                    <td>
+                                        @version.CreatedTime.ToString()
+                                    </td>
+                                    <td>
+                                        @version.AlkoholCount
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </text>
+                        }
+                    </table>
+                </td>
+            </tr>
+        </text>
+    }
+    </tbody>
+</table>

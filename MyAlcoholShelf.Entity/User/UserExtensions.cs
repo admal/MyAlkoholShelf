@@ -7,11 +7,11 @@ namespace MyAlkoholShelf.Entity
 {
     public static class UserExtensions
     {
-        public static IQueryable<UserVersionedEntity> WhereUserEntities(this IQueryable<UserVersionedEntity> entities, User user)
+        public static IQueryable<T> WhereUserEntities<T>(this IQueryable<T> entities, User user) where T : UserVersionedEntity
         {
             return entities.Where(x => x.CreatedBy == user);
         }
-        public static IQueryable<UserVersionedEntity> WhereUserEntities(this IQueryable<UserVersionedEntity> entities, long userId)
+        public static IQueryable<T> WhereUserEntities<T>(this IQueryable<T> entities, long userId) where T : UserVersionedEntity
         {
             return entities.Where(x => x.CreatedBy.Id == userId);
         }
