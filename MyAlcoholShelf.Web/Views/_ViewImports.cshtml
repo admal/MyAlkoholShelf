@@ -1,5 +1,6 @@
 ﻿@using MyAlcoholShelf.Web
-@using jQWidgets.AspNetCore.Mvc.Bootstrap.TagHelpers
+@using MyAlcoholShelf.Web.Tags.Modal;
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@addTagHelper *, jQWidgets.AspNetCore.Mvc.Bootstrap.TagHelpers
+@*Tak musi być, addTagHelper nie bierze namespaców tylko folder*@
+@addTagHelper "*, MyAlcoholShelf.Web.Tags"
 @inject Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration TelemetryConfiguration

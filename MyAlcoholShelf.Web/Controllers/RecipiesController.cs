@@ -44,5 +44,30 @@ namespace MyAlcoholShelf.Web.Controllers
                 .ToList();
             return View(recipies);
         }
+
+//        public IActionResult GetAlkoholRecipeAddditModal(long? recipeId)
+//        {
+//            AlkoholRecipeAddEditModel model = new AlkoholRecipeAddEditModel();
+//            if (recipeId.HasValue)
+//            {
+//                var recipe = _repository.Get<AlkoholRecipe>(recipeId.Value);
+//                model = new AlkoholRecipeAddEditModel()
+//                {
+//                    Id = recipe.Id,
+//                    AlkoholRecipeDefinition = recipe.AlkoholRecipeDefinition.Id,
+//                    Name = recipe.AlkoholRecipeDefinition.Name,
+//                    AdditionalInformation = recipe.AdditionalInfo,
+//                    Recipe = recipe.Recipe,
+//                    PreparationTime = recipe.PreparationPeriod
+//                };
+//            }
+//            return PartialView("AlkoholRecipeAddditModal", model);
+//        }
+
+        [HttpGet]
+        public IActionResult GetAddEditView(long? recipeId)
+        {
+            return ViewComponent("AlkoholRecipeAddEdit", new {recipeId });
+        }
     }
 }

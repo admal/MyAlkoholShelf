@@ -1,14 +1,28 @@
-﻿@model System.Collections.Generic.List<MyAlcoholShelf.Web.Models.AlkoholRecipeViewModel>
+﻿@using MyAlcoholShelf.Web.Models
+@model System.Collections.Generic.List<MyAlcoholShelf.Web.Models.AlkoholRecipeViewModel>
 
 @{
     ViewBag.Title = "Your recipies";
     Layout = "_Layout";
-
-
+    
 }
 
 <h2>Your recipies</h2>
-<table>
+
+<asf:modal id="myModal" title="Hello">
+    <asf:modal-body id="modal-body">
+        BODY!
+    </asf:modal-body>
+    <asf:modal-footer show-dismiss="false">
+        <button type="button" class="btn btn-primary">Keep Going</button>
+    </asf:modal-footer>
+</asf:modal>
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Add recipe
+</button>
+
+<table class="table table-bordered">
     <thead>
     <tr>
         <th>Name</th>
@@ -52,3 +66,40 @@
     }
     </tbody>
 </table>
+
+
+
+<!-- Modal -->
+@*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">*@
+@*    <div class="modal-dialog" role="document">*@
+@*        <div class="modal-content">*@
+@*            <div class="modal-header">*@
+@*                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+@*                <h4 class="modal-title" id="myModalLabel">Modal title</h4>*@
+@*            </div>*@
+@*            <div class="modal-body">*@
+@*                ...*@
+@*            </div>*@
+@*            <div class="modal-footer">*@
+@*                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>*@
+@*                <button type="button" class="btn btn-primary">Save changes</button>*@
+@*            </div>*@
+@*        </div>*@
+@*    </div>*@
+@*</div>*@
+
+@section Scripts{
+    <script>
+        function getEditView(id) {
+            api.getView('/Recipies/GetAddEditView',
+                { recipeId: id },
+                'modal-body',
+                function(response) { console.error(response); });
+        }
+
+        $('#myModal').on('show.bs.modal',
+            function() {
+                getEditView();
+            });
+    </script>
+}

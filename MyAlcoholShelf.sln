@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAlcoholShelf.Services", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAlcoholShelf.Common", "MyAlcoholShelf.Common\MyAlcoholShelf.Common.csproj", "{ED3E637E-8D4B-459F-8FE2-9ADFB5178C39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAlcoholShelf.Web.Tags", "MyAlcoholShelf.Web.Tags\MyAlcoholShelf.Web.Tags.csproj", "{BE46F003-DF6A-4B19-96CE-3CC123AC48DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{ED3E637E-8D4B-459F-8FE2-9ADFB5178C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED3E637E-8D4B-459F-8FE2-9ADFB5178C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED3E637E-8D4B-459F-8FE2-9ADFB5178C39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE46F003-DF6A-4B19-96CE-3CC123AC48DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE46F003-DF6A-4B19-96CE-3CC123AC48DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE46F003-DF6A-4B19-96CE-3CC123AC48DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE46F003-DF6A-4B19-96CE-3CC123AC48DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
