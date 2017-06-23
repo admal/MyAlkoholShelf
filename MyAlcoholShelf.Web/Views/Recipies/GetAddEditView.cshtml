@@ -1,0 +1,20 @@
+﻿@using MyAlcoholShelf.Web.Models
+@model MyAlcoholShelf.Web.Models.AlkoholRecipeAddEditModel
+
+@{
+    ViewBag.Title = "New recipe";
+    Layout = "_Layout";
+}
+
+<h2>New recipe</h2>
+<form asp-action="SaveOrUpdateRecipeVersion" asp-anti-forgery="true" asp-controller="Recipies">
+    <input type="hidden" asp-for="Id"/>
+    <input type="hidden" asp-for="AlkoholRecipeDefinition"/>
+    
+    <asf:textbox asp-for="Name"></asf:textbox>
+    <asf:textbox asp-for="PreparationTime"></asf:textbox>
+    <asf:textarea asp-for="Recipe"></asf:textarea>
+    <asf:textarea asp-for="AdditionalInformation"></asf:textarea>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>

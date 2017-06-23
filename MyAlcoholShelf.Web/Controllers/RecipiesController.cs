@@ -63,11 +63,37 @@ namespace MyAlcoholShelf.Web.Controllers
 //            }
 //            return PartialView("AlkoholRecipeAddditModal", model);
 //        }
-
+        
+        
         [HttpGet]
         public IActionResult GetAddEditView(long? recipeId)
         {
-            return ViewComponent("AlkoholRecipeAddEdit", new {recipeId });
+            var recipe = new AlkoholRecipeAddEditModel();
+            if (recipeId.HasValue)
+            {
+                var entity = _repository.Get<AlkoholRecipe>(recipeId.Value);
+                recipe.Id = entity.Id;
+                recipe.Name = entity.AlkoholRecipeDefinition.Name;
+                recipe.PreparationTime = entity.PreparationPeriod;
+                recipe.Recipe = entity.Recipe;
+                recipe.Ingredients = entity.Ingredients.Select(x => x.Ingredient.Name).ToList();
+                recipe.AdditionalInformation = entity.AdditionalInfo;
+                recipe.AlkoholRecipeDefinition = entity.AlkoholRecipeDefinition.Id;
+                
+                return View(recipe);
+            }
+
+            return View(recipe);
+        }
+
+        public IActionResult SaveOrUpdateRecipeVersion(AlkoholRecipeAddEditModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult DeleteRecipe(long recipeId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

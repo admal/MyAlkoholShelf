@@ -1,13 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
-
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Include="wwwroot\css\bootstrap.mvc.css" />
     <Content Include="wwwroot\js\ajaxHelper.js" />
@@ -34,5 +31,7 @@
     <ProjectReference Include="..\MyAlcoholShelf.Services\MyAlcoholShelf.Services.csproj" />
     <ProjectReference Include="..\MyAlcoholShelf.Web.Tags\MyAlcoholShelf.Web.Tags.csproj" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Folder Include="Views\Shared\Components\" />
+  </ItemGroup>
 </Project>
