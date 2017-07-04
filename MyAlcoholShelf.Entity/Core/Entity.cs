@@ -35,6 +35,12 @@ namespace MyAlkoholShelf.Entity
 
     public abstract class VersionedEntity : Entity
     {
+        public VersionedEntity()
+        {
+            CreatedTime = DateTime.Now;
+            ModifiedTime = DateTime.Now;
+        }
+        
         public virtual DateTime CreatedTime { get; set; }
         public virtual DateTime ModifiedTime { get; set; }
     }

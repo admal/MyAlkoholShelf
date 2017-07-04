@@ -4,11 +4,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MyAlcoholShelf.Common;
 
 namespace MyAlkoholShelf.Entity
 {
     public class AlkoholRecipe : VersionedEntity, ISoftDeletable
     {
+        public AlkoholRecipe()
+        {
+            AlkoholInstances = ISetHelpers.EnsureExists(AlkoholInstances);
+            Ingredients = ISetHelpers.EnsureExists(Ingredients);
+        }
+        
         public virtual string Recipe { get; set; }
         public virtual string AdditionalInfo { get; set; }
 
@@ -19,12 +26,13 @@ namespace MyAlkoholShelf.Entity
         [NotMapped]
         public virtual TimeSpan PreparationPeriod
         {
-            get { return TimeSpan.FromTicks(PreparationPeriodTicks); }
-            set { PreparationPeriodTicks = value.Ticks; }
+            get => TimeSpan.FromTicks(PreparationPeriodTicks);
+            set => PreparationPeriodTicks = value.Ticks;
         }
         public virtual bool IsDeleted { get; set; }
 
         public virtual AlkoholRecipeDefinition AlkoholRecipeDefinition { get; set; }
+        public virtual long? AlkoholRecipeDefinitionId { get; set; }
         public virtual ISet<AlkoholInstance> AlkoholInstances { get; set; }
         public virtual ISet<AlkoholRecipe_Ingredient> Ingredients { get; set; }
     }
@@ -43,7 +51,8 @@ namespace MyAlkoholShelf.Entity
                 b.Property(x => x.IsDeleted);
 
                 b.HasOne(x => x.AlkoholRecipeDefinition)
-                    .WithMany(x => x.AlkoholRecipies);
+                    .WithMany(x => x.AlkoholRecipies)
+                    .HasForeignKey(x=>x.AlkoholRecipeDefinitionId);
 
                 b.HasMany(x => x.AlkoholInstances)
                     .WithOne(x => x.AlkoholRecipe);

@@ -20,7 +20,7 @@ namespace MyAlcoholShelf.Web.Tags.Fom
                 viewContext: ViewContext, 
                 modelExplorer: AspFor.ModelExplorer, 
                 expression: AspFor.Name,
-                value: (string) null,
+                value: AspFor.Model,
                 format: null,
                 htmlAttributes: new Dictionary<string, object>(){{"class", "form-control"}});
             output.Content.AppendHtml(inputTagBuilder);

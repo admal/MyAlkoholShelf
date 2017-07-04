@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MyAlcoholShelf.Services;
+using MyAlcoholShelf.Services.Recipies;
 using MyAlkoholShelf.Entity;
 
 namespace MyAlcoholShelf.Web
@@ -36,6 +37,8 @@ namespace MyAlcoholShelf.Web
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IReadRepository, MainRepository>();
+            services.AddTransient<IRepository, MainRepository>();
+            services.AddTransient<IAlkoholRecipeService, AlkoholRecipeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

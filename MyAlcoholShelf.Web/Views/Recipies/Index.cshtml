@@ -33,9 +33,9 @@
                     @recipe.Versions.Count
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <table>
+            <tr> 
+                <td colspan="2">
+                    <table class="table table-bordered">
                         @foreach (var version in recipe.Versions)
                         {
                             <text>
@@ -46,7 +46,14 @@
                                 <td>
                                     @version.AlkoholCount
                                 </td>
-                                <td></td>
+                                <td>
+                                    <a asp-action="GetAddEditView" 
+                                       asp-controller="Recipies"
+                                       asp-route-recipeId="@version.Id">
+                                        Edit
+                                    </a>
+
+                                </td>
                             </tr>
                             </text>
                         }

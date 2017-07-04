@@ -24,7 +24,8 @@ namespace MyAlkoholShelf.Entity
                 b.Property(x => x.IsDeleted);
                 b.Property(x => x.Name);
                 b.HasMany(x => x.AlkoholRecipies)
-                    .WithOne(x => x.AlkoholRecipeDefinition);
+                    .WithOne(x => x.AlkoholRecipeDefinition)
+                    .HasForeignKey(x=>x.AlkoholRecipeDefinitionId);
             });
         }
     }

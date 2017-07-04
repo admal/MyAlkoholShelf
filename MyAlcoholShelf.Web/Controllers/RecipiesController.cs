@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyAlcoholShelf.Services;
+using MyAlcoholShelf.Services.Recipies;
+using MyAlcoholShelf.Services.Recipies.Dto;
 using MyAlcoholShelf.Web.Core;
 using MyAlcoholShelf.Web.Models;
 using MyAlkoholShelf.Entity;
@@ -14,11 +18,14 @@ namespace MyAlcoholShelf.Web.Controllers
 {
     public class RecipiesController : UserBaseController
     {
-        private IReadRepository _repository;
+        private readonly IReadRepository _repository;
+        private IAlkoholRecipeService _alkoholRecipeService;
 
-        public RecipiesController(IReadRepository repository)
+        public RecipiesController(IReadRepository repository, 
+            IAlkoholRecipeService alkoholRecipeService)
         {
             _repository = repository;
+            _alkoholRecipeService = alkoholRecipeService;
         }
 
         // GET: /<controller>/
@@ -71,7 +78,12 @@ namespace MyAlcoholShelf.Web.Controllers
             var recipe = new AlkoholRecipeAddEditModel();
             if (recipeId.HasValue)
             {
-                var entity = _repository.Get<AlkoholRecipe>(recipeId.Value);
+//                var entity = _repository.Get<AlkoholRecipe>(recipeId.Value);
+                var entity = _repository.Query<AlkoholRecipe>()
+                    .Where(x => x.Id == recipeId.Value)
+                    .Include(x => x.AlkoholRecipeDefinition)
+                    .Include(x => x.Ingredients)
+                    .FirstOrDefault();
                 recipe.Id = entity.Id;
                 recipe.Name = entity.AlkoholRecipeDefinition.Name;
                 recipe.PreparationTime = entity.PreparationPeriod;
@@ -86,14 +98,42 @@ namespace MyAlcoholShelf.Web.Controllers
             return View(recipe);
         }
 
-        public IActionResult SaveOrUpdateRecipeVersion(AlkoholRecipeAddEditModel model)
+        private static AddEditAlkoholRecipeDto ModelToDto(AlkoholRecipeAddEditModel model)
         {
-            throw new NotImplementedException();
+            var dto = new AddEditAlkoholRecipeDto()
+            {
+                Id = model.Id,
+                AlkoholRecipeDefinition = model.AlkoholRecipeDefinition,
+                Name = model.Name,
+                Recipe = model.Recipe,
+                AdditionalInformation = model.AdditionalInformation,
+                PreparationTime = model.PreparationTime
+            };
+            return dto;
+        }
+        
+        public IActionResult UpdateRecipe(AlkoholRecipeAddEditModel model)
+        {
+            _alkoholRecipeService.UpdateRecipe(ModelToDto(model));
+            return Ok();
+        }
+        
+        public IActionResult SaveAsNewVersion(AlkoholRecipeAddEditModel model)
+        {
+            _alkoholRecipeService.SaveAsNewVersionRecipe(ModelToDto(model));
+            return Ok();
+        }
+        
+        public IActionResult CreateRecipe(AlkoholRecipeAddEditModel model)
+        {
+            _alkoholRecipeService.CreateRecipe(ModelToDto(model));
+            return Ok();
         }
 
-        public IActionResult DeleteRecipe(long recipeId)
+        public IActionResult DeleteRecipeVersion(long recipeId)
         {
-            throw new NotImplementedException();
+            _alkoholRecipeService.DeleteRecipeVersion(recipeId);
+            return Ok();
         }
     }
 }
