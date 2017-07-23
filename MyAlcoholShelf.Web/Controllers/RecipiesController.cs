@@ -19,7 +19,7 @@ namespace MyAlcoholShelf.Web.Controllers
     public class RecipiesController : UserBaseController
     {
         private readonly IReadRepository _repository;
-        private IAlkoholRecipeService _alkoholRecipeService;
+        private readonly IAlkoholRecipeService _alkoholRecipeService;
 
         public RecipiesController(IReadRepository repository, 
             IAlkoholRecipeService alkoholRecipeService)
@@ -51,26 +51,6 @@ namespace MyAlcoholShelf.Web.Controllers
                 .ToList();
             return View(recipies);
         }
-
-//        public IActionResult GetAlkoholRecipeAddditModal(long? recipeId)
-//        {
-//            AlkoholRecipeAddEditModel model = new AlkoholRecipeAddEditModel();
-//            if (recipeId.HasValue)
-//            {
-//                var recipe = _repository.Get<AlkoholRecipe>(recipeId.Value);
-//                model = new AlkoholRecipeAddEditModel()
-//                {
-//                    Id = recipe.Id,
-//                    AlkoholRecipeDefinition = recipe.AlkoholRecipeDefinition.Id,
-//                    Name = recipe.AlkoholRecipeDefinition.Name,
-//                    AdditionalInformation = recipe.AdditionalInfo,
-//                    Recipe = recipe.Recipe,
-//                    PreparationTime = recipe.PreparationPeriod
-//                };
-//            }
-//            return PartialView("AlkoholRecipeAddditModal", model);
-//        }
-        
         
         [HttpGet]
         public IActionResult GetAddEditView(long? recipeId)
@@ -78,7 +58,6 @@ namespace MyAlcoholShelf.Web.Controllers
             var recipe = new AlkoholRecipeAddEditModel();
             if (recipeId.HasValue)
             {
-//                var entity = _repository.Get<AlkoholRecipe>(recipeId.Value);
                 var entity = _repository.Query<AlkoholRecipe>()
                     .Where(x => x.Id == recipeId.Value)
                     .Include(x => x.AlkoholRecipeDefinition)
@@ -92,12 +71,11 @@ namespace MyAlcoholShelf.Web.Controllers
                 recipe.AdditionalInformation = entity.AdditionalInfo;
                 recipe.AlkoholRecipeDefinition = entity.AlkoholRecipeDefinition.Id;
                 
-                return View(recipe);
             }
 
             return View(recipe);
         }
-
+        
         private static AddEditAlkoholRecipeDto ModelToDto(AlkoholRecipeAddEditModel model)
         {
             var dto = new AddEditAlkoholRecipeDto()
@@ -111,23 +89,25 @@ namespace MyAlcoholShelf.Web.Controllers
             };
             return dto;
         }
-        
-        public IActionResult UpdateRecipe(AlkoholRecipeAddEditModel model)
+
+
+        public IActionResult SaveRecipe(AlkoholRecipeAddEditModel model)
         {
-            _alkoholRecipeService.UpdateRecipe(ModelToDto(model));
-            return Ok();
+            if (model.Id.HasValue)
+            {
+                _alkoholRecipeService.UpdateRecipe(ModelToDto(model));
+            }
+            else
+            {
+                _alkoholRecipeService.CreateRecipe(ModelToDto(model));
+            }
+            return Redirect("Index");
         }
-        
+
         public IActionResult SaveAsNewVersion(AlkoholRecipeAddEditModel model)
         {
             _alkoholRecipeService.SaveAsNewVersionRecipe(ModelToDto(model));
-            return Ok();
-        }
-        
-        public IActionResult CreateRecipe(AlkoholRecipeAddEditModel model)
-        {
-            _alkoholRecipeService.CreateRecipe(ModelToDto(model));
-            return Ok();
+            return Redirect("Index");
         }
 
         public IActionResult DeleteRecipeVersion(long recipeId)

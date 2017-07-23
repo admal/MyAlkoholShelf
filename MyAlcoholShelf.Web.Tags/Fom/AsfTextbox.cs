@@ -16,13 +16,19 @@ namespace MyAlcoholShelf.Web.Tags.Fom
 
         protected override void GenerateInputElement(TagHelperContext context, TagHelperOutput output)
         {
+            var htmlAttributes = new Dictionary<string, object>(){{"class", "form-control"}};
+            if (Disabled)
+            {
+                htmlAttributes.Add("disabled", "");
+            }
+            
             var inputTagBuilder = this.Generator.GenerateTextBox(
                 viewContext: ViewContext, 
                 modelExplorer: AspFor.ModelExplorer, 
                 expression: AspFor.Name,
                 value: AspFor.Model,
                 format: null,
-                htmlAttributes: new Dictionary<string, object>(){{"class", "form-control"}});
+                htmlAttributes: htmlAttributes);
             output.Content.AppendHtml(inputTagBuilder);
         }
 

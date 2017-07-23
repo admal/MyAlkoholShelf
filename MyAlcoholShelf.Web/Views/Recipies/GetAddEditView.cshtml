@@ -7,13 +7,17 @@
 }
 
 <h2>New recipe</h2>
-<form asp-action="CreateRecipe" asp-anti-forgery="true" asp-controller="Recipies">
+<form asp-anti-forgery="true" asp-controller="Recipies">
     <input type="hidden" asp-for="Id"/>
     <input type="hidden" asp-for="AlkoholRecipeDefinition"/>
-    <asf:textbox asp-for="Name"></asf:textbox>
+    <asf:textbox asp-for="Name" disabled="@Model.Id.HasValue"></asf:textbox>
     <asf:textbox asp-for="PreparationTime"></asf:textbox>
     <asf:textarea asp-for="Recipe"></asf:textarea>
     <asf:textarea asp-for="AdditionalInformation"></asf:textarea>
 
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-default" asp-action="SaveRecipe">Save</button>
+    @if(Model.Id.HasValue)
+    {
+        <button type="submit" class="btn btn-default" asp-action="SaveAsNewVersion">Save as new version</button>
+    }
 </form>

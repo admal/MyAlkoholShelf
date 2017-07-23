@@ -16,6 +16,9 @@ namespace MyAlcoholShelf.Web.Tags.Fom
         
         public string Class { get; set; }
         
+        public bool Disabled { get; set; } = false;
+//        public bool Visible { get; set; } = true;
+        
         [HtmlAttributeNotBound]
         [ViewContext]
         public ViewContext ViewContext { get; set; }

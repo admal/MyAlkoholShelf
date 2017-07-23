@@ -40,12 +40,27 @@ namespace MyAlcoholShelf.Services.Recipies
 
         public void SaveAsNewVersionRecipe(AddEditAlkoholRecipeDto dto)
         {
-            throw new System.NotImplementedException();
+            var recipeVersion = new AlkoholRecipe
+            {
+                Recipe = dto.Recipe,
+                AdditionalInfo = dto.AdditionalInformation,
+                PreparationPeriod = dto.PreparationTime,
+                AlkoholRecipeDefinitionId =  dto.AlkoholRecipeDefinition.Value,
+                CreatedTime = DateTime.Now,
+                ModifiedTime = DateTime.Now
+            };
+            
+            _repository.SaveOrUpdate(recipeVersion);
         }
 
         public void UpdateRecipe(AddEditAlkoholRecipeDto dto)
         {
-            throw new System.NotImplementedException();
+            var recipe = _repository.Get<AlkoholRecipe>(dto.Id.Value);
+            recipe.Recipe = dto.Recipe;
+            recipe.AdditionalInfo = dto.AdditionalInformation;
+            recipe.PreparationPeriod = dto.PreparationTime;
+            recipe.ModifiedTime = DateTime.Now;
+            _repository.SaveOrUpdate(recipe);
         }
 
         public void DeleteRecipeVersion(long recipeId)

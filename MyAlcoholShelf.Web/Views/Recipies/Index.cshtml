@@ -35,28 +35,38 @@
             </tr>
             <tr> 
                 <td colspan="2">
+                    <h4>Recipe versions</h4>
                     <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Created at</th>
+                            <th>Alkohols count</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         @foreach (var version in recipe.Versions)
                         {
                             <text>
-                            <tr>
-                                <td>
-                                    @version.CreatedTime.ToString()
-                                </td>
-                                <td>
-                                    @version.AlkoholCount
-                                </td>
-                                <td>
-                                    <a asp-action="GetAddEditView" 
-                                       asp-controller="Recipies"
-                                       asp-route-recipeId="@version.Id">
-                                        Edit
-                                    </a>
+                                <tr>
+                                    <td>
+                                        @version.CreatedTime.ToString()
+                                    </td>
+                                    <td>
+                                        @version.AlkoholCount
+                                    </td>
+                                    <td>
+                                        <a asp-action="GetAddEditView"
+                                           asp-controller="Recipies"
+                                           asp-route-recipeId="@version.Id">
+                                            Edit
+                                        </a>
 
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             </text>
                         }
+                        </tbody>
                     </table>
                 </td>
             </tr>
