@@ -2,23 +2,23 @@
 @model System.Collections.Generic.List<MyAlcoholShelf.Web.Models.AlkoholRecipeViewModel>
 
 @{
-    ViewBag.Title = "Your recipies";
+    ViewBag.Title = "Twoje przepisy";
     Layout = "_Layout";
 
 }
 
-<h2>Your recipies</h2>
+<h2>Twoje przepisy</h2>
 
 <a asp-action="GetAddEditView" 
    asp-controller="Recipies">
-    New recipe
+    Dodaj przepis
 </a>
 
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Name</th>
-            <th># Versions</th>
+            <th>Nazwa</th>
+            <th># Wersji</th>
         </tr>
     </thead>
     <tbody>
@@ -39,8 +39,8 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th>Created at</th>
-                            <th>Alkohols count</th>
+                            <th>Data i godzina dodania</th>
+                            <th>Liczba alkoholi</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -59,9 +59,11 @@
                                         <a asp-action="GetAddEditView"
                                            asp-controller="Recipies"
                                            asp-route-recipeId="@version.Id">
-                                            Edit
+                                            Edytuj
                                         </a>
-
+                                        <a asp-action="DeleteRecipeVersion" asp-route-recipeId="@version.Id">
+                                            Usuń
+                                        </a>
                                     </td>
                                 </tr>
                             </text>

@@ -13,14 +13,14 @@ namespace MyAlcoholShelf.Web.Models
         public long? Id { get; set; }
         [HiddenInput]
         public long? AlkoholRecipeDefinition { get; set; }
-        [Display(Name="Recipe name")]
+        [Display(Name="Nazwa przepisu")]
         public string Name { get; set; }
         public IList<string> Ingredients { get; set; }
-        [Display(Name = "Preparation time")]
+        [Display(Name = "Czas przygotowania")]
         public TimeSpan PreparationTime { get; set; }
-        [Display(Name = "Additional information")]
+        [Display(Name = "Dodatkowe informacje")]
         public string AdditionalInformation { get; set; }
-        [Display(Name = "Recipe")]
+        [Display(Name = "Przepis")]
         public string Recipe { get; set; }
     }
 }

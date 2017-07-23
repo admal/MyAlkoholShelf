@@ -2,7 +2,7 @@
 @model MyAlcoholShelf.Web.Models.AlkoholRecipeAddEditModel
 
 @{
-    ViewBag.Title = "New recipe";
+    ViewBag.Title = Model.Id.HasValue ? "Edytuj przepis" : "Nowy przepis";
     Layout = "_Layout";
 }
 
@@ -15,9 +15,9 @@
     <asf:textarea asp-for="Recipe"></asf:textarea>
     <asf:textarea asp-for="AdditionalInformation"></asf:textarea>
 
-    <button type="submit" class="btn btn-default" asp-action="SaveRecipe">Save</button>
+    <button type="submit" class="btn btn-default" asp-action="SaveRecipe">Zapisz</button>
     @if(Model.Id.HasValue)
     {
-        <button type="submit" class="btn btn-default" asp-action="SaveAsNewVersion">Save as new version</button>
+        <button type="submit" class="btn btn-default" asp-action="SaveAsNewVersion">Zapisz jako nową wersję</button>
     }
 </form>
