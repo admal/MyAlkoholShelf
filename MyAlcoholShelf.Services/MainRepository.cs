@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using MyAlkoholShelf.Entity;
@@ -39,14 +39,24 @@ namespace MyAlcoholShelf.Services
             _context.SaveChanges();
         }
 
-        public void Delete(long id)
+        public void Delete<T>(T entity) where T : Entity
         {
-            throw new NotImplementedException();
+            var entities = _context.Set<T>();
+            entities.Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public void Delete<T>(IEnumerable<T> entities) where T : Entity
+        {
+            var allEntities = _context.Set<T>();
+            allEntities.RemoveRange(entities);
+            _context.SaveChanges();
         }
 
         public void SoftDelete<T>(T entity) where T : Entity, ISoftDeletable
         {
-            throw new NotImplementedException();
+            entity.IsDeleted = true;
+            SaveOrUpdate(entity);
         }
     }
 }

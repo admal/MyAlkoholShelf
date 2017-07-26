@@ -12,7 +12,7 @@ namespace MyAlcoholShelf.Services
     public interface IRepository : IReadRepository
     {
         void SaveOrUpdate<T>(T entity) where T : Entity;
-        void Delete(long id);
+        void Delete<T>(T entity) where T : Entity;
         void SoftDelete<T>(T entity) where T : Entity, ISoftDeletable;
     }
 }

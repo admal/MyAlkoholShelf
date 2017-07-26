@@ -8,6 +8,7 @@ namespace MyAlcoholShelf.Web.Core
 {
     public abstract class UserBaseController : Controller
     {
-        public long LoggedUserId => 2;
+        //TODO: WYPIERDOLIĆ TO !!!!!
+        public long LoggedUserId => 1;
     }
 }

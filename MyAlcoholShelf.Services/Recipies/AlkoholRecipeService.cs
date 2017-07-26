@@ -65,12 +65,14 @@ namespace MyAlcoholShelf.Services.Recipies
 
         public void DeleteRecipeVersion(long recipeId)
         {
-            throw new System.NotImplementedException();
+            var recipeVersion = _repository.Get<AlkoholRecipe>(recipeId);
+            _repository.SoftDelete(recipeVersion);
         }
 
         public void DeleteRecipeDefinition(long recipeDefinitionId)
         {
-            throw new System.NotImplementedException();
+            var recipeDefinition = _repository.Get<AlkoholRecipeDefinition>(recipeDefinitionId);
+            _repository.SoftDelete(recipeDefinition);
         }
     }
 

@@ -19,6 +19,7 @@
         <tr>
             <th>Nazwa</th>
             <th># Wersji</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -32,9 +33,14 @@
                 <td>
                     @recipe.Versions.Count
                 </td>
+                <td>
+                    <a asp-action="DeleteRecipeDefinition" asp-route-recipeDefinition="@recipe.Id">
+                        Usuń przepis
+                    </a>
+                </td>
             </tr>
             <tr> 
-                <td colspan="2">
+                <td colspan="3">
                     <h4>Recipe versions</h4>
                     <table class="table table-bordered">
                         <thead>
@@ -62,7 +68,7 @@
                                             Edytuj
                                         </a>
                                         <a asp-action="DeleteRecipeVersion" asp-route-recipeId="@version.Id">
-                                            Usuń
+                                            Usuń wersję
                                         </a>
                                     </td>
                                 </tr>

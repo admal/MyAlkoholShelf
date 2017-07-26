@@ -73,7 +73,7 @@ namespace MyAlcoholShelf.Web.Controllers
                 
             }
 
-            return View(recipe);
+            return View("AddEditRecipeVersionView", recipe);
         }
         
         private static AddEditAlkoholRecipeDto ModelToDto(AlkoholRecipeAddEditModel model)
@@ -113,7 +113,13 @@ namespace MyAlcoholShelf.Web.Controllers
         public IActionResult DeleteRecipeVersion(long recipeId)
         {
             _alkoholRecipeService.DeleteRecipeVersion(recipeId);
-            return Ok();
+            return Redirect("Index");
+        }
+
+        public IActionResult DeleteRecipeDefinition(long recipeDefinition)
+        {
+            _alkoholRecipeService.DeleteRecipeDefinition(recipeDefinition);
+            return Redirect("Index");
         }
     }
 }
