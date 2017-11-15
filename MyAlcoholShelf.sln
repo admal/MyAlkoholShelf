@@ -1,17 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAlcoholShelf.Web", "MyAlcoholShelf.Web\MyAlcoholShelf.Web.csproj", "{3BA4445B-828C-4153-A706-63F64B0D937C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAlcoholShelf.Entity", "MyAlcoholShelf.Entity\MyAlcoholShelf.Entity.csproj", "{1957DFB1-9628-482C-AB92-2C0D949B68B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAlcoholShelf.Entity", "MyAlcoholShelf.Entity\MyAlcoholShelf.Entity.csproj", "{1957DFB1-9628-482C-AB92-2C0D949B68B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAlcoholShelf.Services", "MyAlcoholShelf.Services\MyAlcoholShelf.Services.csproj", "{3536A15C-0B13-4B13-9B47-9B2102FE0C8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAlcoholShelf.Services", "MyAlcoholShelf.Services\MyAlcoholShelf.Services.csproj", "{3536A15C-0B13-4B13-9B47-9B2102FE0C8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAlcoholShelf.Common", "MyAlcoholShelf.Common\MyAlcoholShelf.Common.csproj", "{ED3E637E-8D4B-459F-8FE2-9ADFB5178C39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAlcoholShelf.Common", "MyAlcoholShelf.Common\MyAlcoholShelf.Common.csproj", "{ED3E637E-8D4B-459F-8FE2-9ADFB5178C39}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAlcoholShelf.Web.Tags", "MyAlcoholShelf.Web.Tags\MyAlcoholShelf.Web.Tags.csproj", "{BE46F003-DF6A-4B19-96CE-3CC123AC48DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAlkoholShelf.Web", "MyAlkoholShelf.Web\MyAlkoholShelf.Web.csproj", "{FE187699-17BE-44A7-9B64-874198380A45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3BA4445B-828C-4153-A706-63F64B0D937C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BA4445B-828C-4153-A706-63F64B0D937C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BA4445B-828C-4153-A706-63F64B0D937C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BA4445B-828C-4153-A706-63F64B0D937C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1957DFB1-9628-482C-AB92-2C0D949B68B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1957DFB1-9628-482C-AB92-2C0D949B68B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1957DFB1-9628-482C-AB92-2C0D949B68B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,12 +29,15 @@ Global
 		{ED3E637E-8D4B-459F-8FE2-9ADFB5178C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED3E637E-8D4B-459F-8FE2-9ADFB5178C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED3E637E-8D4B-459F-8FE2-9ADFB5178C39}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BE46F003-DF6A-4B19-96CE-3CC123AC48DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE46F003-DF6A-4B19-96CE-3CC123AC48DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE46F003-DF6A-4B19-96CE-3CC123AC48DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE46F003-DF6A-4B19-96CE-3CC123AC48DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE187699-17BE-44A7-9B64-874198380A45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE187699-17BE-44A7-9B64-874198380A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE187699-17BE-44A7-9B64-874198380A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE187699-17BE-44A7-9B64-874198380A45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D66A9045-84AC-4A22-92C1-E3AC75B8B8DC}
 	EndGlobalSection
 EndGlobal
