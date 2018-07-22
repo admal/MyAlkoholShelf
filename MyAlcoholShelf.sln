@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAlcoholShelf.Services", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAlcoholShelf.Common", "MyAlcoholShelf.Common\MyAlcoholShelf.Common.csproj", "{ED3E637E-8D4B-459F-8FE2-9ADFB5178C39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAlkoholShelf.Web", "MyAlkoholShelf.Web\MyAlkoholShelf.Web.csproj", "{FE187699-17BE-44A7-9B64-874198380A45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAlkoholShelf.Web", "MyAlkoholShelf.Web\MyAlkoholShelf.Web.csproj", "{FE187699-17BE-44A7-9B64-874198380A45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

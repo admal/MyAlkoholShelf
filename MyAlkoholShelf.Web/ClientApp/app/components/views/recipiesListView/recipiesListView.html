@@ -1,0 +1,59 @@
+﻿<template>
+  <require from="app/components/controls/http/datasource/data-source"></require>
+  <require from="app/components/converters/datetime"></require>
+  <h1>Moje przepisy</h1>
+  <button class="btn btn-primary"
+          click.trigger="myModal.open()">
+    Dodaj przepis
+  </button>
+  <data-source url="Recipe/GetRecipies"
+               method="GET"
+               auto-load="true"
+               view-model.ref="myDataSource">
+  </data-source>
+
+  <p if.bind="!myDataSource.data"><em>Ładowanie...</em></p>
+
+  <table if.bind="myDataSource.data" class="table">
+    <thead>
+      <tr>
+        <th>Nazwa</th>
+        <th>Liczba wersji</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <template repeat.for="recipeDefinition of myDataSource.data">
+        <tr>
+          <td>${ recipeDefinition.name}</td>
+          <td>${recipeDefinition.versions.length}</td>
+          <td><button class="btn btn-default" click.trigger="toggleRow('row'+recipeDefinition.id)">Szczegóły</button></td>
+        </tr>
+        <tr style="display: none" id.bind="'row'+recipeDefinition.id">
+          <td colspan="3">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Data dodania</th>
+                  <th>Liczba alkoholi</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr repeat.for="version of recipeDefinition.versions">
+                  <td>${version.createdTime | datetime}</td>
+                  <td>${version.alkoholCount}</td>
+                  <td>
+                    <a class="btn btn-default" route-href="route: recipe; params.bind:{id: version.id}">
+                      Edycja
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </template>
+    </tbody>
+  </table>
+</template>

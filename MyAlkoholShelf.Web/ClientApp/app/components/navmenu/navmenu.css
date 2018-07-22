@@ -1,8 +1,9 @@
+/*
 li .glyphicon {
     margin-right: 10px;
 }
 
-/* Highlighting rules for nav menu items */
+/* Highlighting rules for nav menu items !1!
 li.au-target.link-active a,
 li.au-target.link-active a:hover,
 li.au-target.link-active a:focus {
@@ -10,7 +11,7 @@ li.au-target.link-active a:focus {
     color: white;
 }
 
-/* Keep the nav menu independent of scrolling and on top of other items */
+/* Keep the nav menu independent of scrolling and on top of other items !1!
 .main-nav {
     position: fixed;
     top: 0;
@@ -20,7 +21,7 @@ li.au-target.link-active a:focus {
 }
 
 @media (min-width: 768px) {
-    /* On small screens, convert the nav menu to a vertical sidebar */
+    /* On small screens, convert the nav menu to a vertical sidebar !1!
     .main-nav {
         height: 100%;
         width: calc(25% - 20px);
@@ -50,10 +51,11 @@ li.au-target.link-active a:focus {
         border-radius: 4px;
     }
     .navbar a {
-        /* If a menu item's text is too long, truncate it */
+        /* If a menu item's text is too long, truncate it !1!
         width: 100%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 }
+*/

@@ -13,6 +13,16 @@
     <None Remove="ClientApp\app\components\controls\modal\FormViewModel.ts" />
     <None Remove="ClientApp\app\components\controls\modal\modal.ts" />
     <None Remove="ClientApp\app\components\controls\modal\modalElements\ViewData.ts" />
+    <None Remove="ClientApp\app\components\converters\date.ts" />
+    <None Remove="ClientApp\app\components\converters\datetime.ts" />
+    <None Remove="ClientApp\app\components\converters\json.ts" />
+    <None Remove="ClientApp\app\components\views\recipiesListView\recipiesListView.ts" />
+    <None Remove="ClientApp\app\components\views\recipyAddEditView\recipyAddEditView.ts" />
+    <None Remove="ClientApp\app\core\viewBase.ts" />
+    <None Remove="ClientApp\app\services\HttpRequestFactory.ts" />
+    <None Remove="ClientApp\app\services\HttpService.ts" />
+    <None Remove="ClientApp\app\services\IHttpService.ts" />
+    <None Remove="ClientApp\app\services\requests\HttpRequestData.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,16 +41,31 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\app\components\views\alkoholsListView\" />
+    <Folder Include="ClientApp\app\components\views\alkoholAddEditView\" />
+    <Folder Include="ClientApp\app\components\views\ingredientsListView\" />
+    <Folder Include="ClientApp\app\components\views\ingredientAddEditView\" />
     <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\controls\form\submit-form-button\submit-form-button.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\controls\form\bvf-textarea\bvf-textarea.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\controls\form\textbox\textbox.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\controls\modal\FormViewModel.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\controls\modal\modal.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\controls\modal\ViewData.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\converters\date.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\converters\datetime.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\converters\json.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\fetchdata\my-modal.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\views\recipiesListView\recipiesListView.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\views\recipyAddEditView\recipyAddEditView.ts" />
+    <TypeScriptCompile Include="ClientApp\app\core\viewBase.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\HttpRequestFactory.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\HttpService.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\IHttpService.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\requests\HttpRequestData.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

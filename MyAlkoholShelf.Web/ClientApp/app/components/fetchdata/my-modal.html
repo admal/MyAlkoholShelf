@@ -1,29 +1,46 @@
 ﻿<template>
-    <require from="app/components/controls/modal/modalElements/header/modal-header.html"></require>
-    <require from="app/components/controls/modal/modalElements/footer/modal-footer.html"></require>
-    <require from="app/components/controls/modal/modalElements/content/modal-content.html"></require>
-    <require from="app/components/controls/form/textbox/textbox"></require>
-    <require from="app/components/controls/form/submit-form-button/submit-form-button"></require>
-    <form>
-        <modal-header>
-            <h4 class="modal-title">${$view.title}</h4>
-        </modal-header>
-        <modal-content>
-            <textbox field.bind="$view.data.recipeName"
-                     label="Recipe name"
-                     placeholder="Enter name">
-            </textbox>
-        </modal-content>
-        <modal-footer>
-            <submit-form-button data.bind="$view.data"
-                                url="Recipe/SaveMock"
-                                text="SaveMock">
-            </submit-form-button>
-            <submit-form-button data.bind="20"
-                                url="Recipe/SaveMockId"
-                                text="SaveId">
-            </submit-form-button>
-            <button type="button" class="btn btn-primary">Save</button>
-        </modal-footer>
-    </form>
+  <require from="app/components/controls/modal/modalElements/header/modal-header.html"></require>
+  <require from="app/components/controls/modal/modalElements/footer/modal-footer.html"></require>
+  <require from="app/components/controls/modal/modalElements/content/modal-content.html"></require>
+  <require from="app/components/controls/form/textbox/textbox"></require>
+  <require from="app/components/controls/form/submit-form-button/submit-form-button"></require>
+  <require from="app/components/controls/form/bvf-textarea/bvf-textarea"></require>
+  <require from="app/components/controls/http/datasource/data-source"></require>
+  <require from="app/components/converters/json"></require>
+
+  <data-source url="Recipe/GetAddEditModel"
+               params="$view.data.id"
+               view-model.ref="model"
+               auto-load="true"
+               method="GET">
+  </data-source>
+  <form>
+    <modal-header>
+      <h4 class="modal-title">${$view.title}</h4>
+    </modal-header>
+    <p if.bind="!model.data"><em>Loading...</em></p>
+    <modal-content if.bind="model.data">
+      <pre text-content.bind="data | json"></pre>
+<!--      <pre text-content.bind="model | json"></pre>-->
+      <textbox field.bind="model.data.recipeName"
+               label="Recipe name"
+               placeholder="Enter name">
+      </textbox>
+      <bvf-textarea field.bind="model.data.recipe"
+                    label="Recipe">
+      </bvf-textarea>
+      ${model.data.recipeName}
+    </modal-content>
+    <modal-footer>
+      <submit-form-button data.bind="$view.data"
+                          url="Recipe/SaveMock"
+                          text="SaveMock">
+      </submit-form-button>
+      <submit-form-button data.bind="20"
+                          url="Recipe/SaveMockId"
+                          text="SaveId">
+      </submit-form-button>
+      <button type="button" class="btn btn-primary">Save</button>
+    </modal-footer>
+  </form>
 </template>

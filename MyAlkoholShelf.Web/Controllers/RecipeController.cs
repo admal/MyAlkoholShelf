@@ -48,11 +48,11 @@ namespace MyAlkoholShelf.Web.Controllers
                 .ToList();
             return Json(recipies);
         }
-
-        [HttpGet]
-        public IActionResult GetAddEditView(long? recipeId)
+        
+        public IActionResult GetAddEditModel(long? recipeId)
         {
-            var recipe = new AlkoholRecipeAddEditModel();
+//            [FromQuery(Name = "recipeId")]
+        var recipe = new AlkoholRecipeAddEditModel();
             if (recipeId.HasValue)
             {
                 var entity = _repository.Query<AlkoholRecipe>()

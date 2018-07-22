@@ -1,0 +1,41 @@
+﻿<template>
+  <require from="app/components/controls/form/textbox/textbox"></require>
+  <require from="app/components/controls/form/submit-form-button/submit-form-button"></require>
+  <require from="app/components/controls/form/bvf-textarea/bvf-textarea"></require>
+  <require from="app/components/controls/http/datasource/data-source"></require>
+  <require from="app/components/converters/json"></require>
+
+  <data-source url="Recipe/GetAddEditModel"
+               params.bind="{recipeId: id}"
+               view-model.ref="recipeModel"
+               auto-load="true"
+               method="GET">
+  </data-source>
+  <form>
+    <modal-header>
+      <h4 class="modal-title">${$view.title}</h4>
+    </modal-header>
+    <modal-content if.bind="recipeModel.data">
+      <pre text-content.bind="recipeModel.data | json"></pre>
+      <!--      <pre text-content.bind="model | json"></pre>-->
+      <textbox field.bind="recipeModel.data.recipeName"
+               label="Recipe name"
+               placeholder="Enter name">
+      </textbox>
+      <bvf-textarea field.bind="recipeModel.data.recipe"
+                    label="Recipe">
+      </bvf-textarea>
+    </modal-content>
+    <modal-footer>
+      <submit-form-button data.bind="$view.data"
+                          url="Recipe/SaveMock"
+                          text="SaveMock">
+      </submit-form-button>
+      <submit-form-button data.bind="20"
+                          url="Recipe/SaveMockId"
+                          text="SaveId">
+      </submit-form-button>
+      <button type="button" class="btn btn-primary">Save</button>
+    </modal-footer>
+  </form>
+</template>

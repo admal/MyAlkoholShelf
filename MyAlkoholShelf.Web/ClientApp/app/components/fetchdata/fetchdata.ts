@@ -1,5 +1,7 @@
 import { HttpClient } from 'aurelia-fetch-client';
 import { inject } from 'aurelia-framework';
+import * as $ from "jquery";
+
 
 @inject(HttpClient)
 export class Fetchdata {
@@ -12,6 +14,10 @@ export class Fetchdata {
 //                this.forecasts = data;
 //            });
         
+    }
+
+    public toggleRow(rowId : string) {
+        $('#' + rowId).toggle();
     }
 }
 
