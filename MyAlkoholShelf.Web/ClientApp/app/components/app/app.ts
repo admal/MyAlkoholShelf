@@ -40,7 +40,7 @@ export class App {
                 title: 'Przepisy'
             },
             {
-                route: 'recipe/:id',
+                route: 'recipe/:id?',
                 name: 'recipe',
                 settings: { icon: 'th-list' },
                 moduleId: PLATFORM.moduleName('../views/recipyAddEditView/recipyAddEditView'),

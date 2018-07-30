@@ -112,35 +112,5 @@ namespace MyAlkoholShelf.Web.Controllers
             _alkoholRecipeService.DeleteRecipeVersion(recipeId);
             return Ok();
         }
-
-        [HttpPost]
-        public IActionResult SaveMock([FromBody] TMPCLASS model)
-        {
-            if (string.IsNullOrEmpty(model.RecipeName))
-            {
-                return new StatusCodeResult(500);
-            }
-            return Ok();
-        }
-
-        [HttpPost]
-        public IActionResult SaveMockId([FromBody]long? id)
-        {
-            if (id == null)
-            {
-                return new StatusCodeResult(500);
-            }
-            return Ok();
-        }
-    }
-
-    public class TMPCLASS
-    {
-        public long Id { get; set; }
-        public DateTime CreatedTime { get; set; }
-        public int AlkoholCount { get; set; }
-        public long AlkoholDefinitionId { get; set; }
-        public DateTime ModifiedTime { get; set; }
-        public string RecipeName { get; set; }
     }
 }

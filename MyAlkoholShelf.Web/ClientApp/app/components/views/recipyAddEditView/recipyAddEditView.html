@@ -4,6 +4,7 @@
   <require from="app/components/controls/form/bvf-textarea/bvf-textarea"></require>
   <require from="app/components/controls/http/datasource/data-source"></require>
   <require from="app/components/converters/json"></require>
+  <require from="app/components/controls/form/mas-duration/mas-duration"></require>
 
   <data-source url="Recipe/GetAddEditModel"
                params.bind="{recipeId: id}"
@@ -12,30 +13,21 @@
                method="GET">
   </data-source>
   <form>
-    <modal-header>
-      <h4 class="modal-title">${$view.title}</h4>
-    </modal-header>
-    <modal-content if.bind="recipeModel.data">
-      <pre text-content.bind="recipeModel.data | json"></pre>
-      <!--      <pre text-content.bind="model | json"></pre>-->
-      <textbox field.bind="recipeModel.data.recipeName"
-               label="Recipe name"
-               placeholder="Enter name">
-      </textbox>
-      <bvf-textarea field.bind="recipeModel.data.recipe"
-                    label="Recipe">
-      </bvf-textarea>
-    </modal-content>
-    <modal-footer>
-      <submit-form-button data.bind="$view.data"
-                          url="Recipe/SaveMock"
-                          text="SaveMock">
-      </submit-form-button>
-      <submit-form-button data.bind="20"
-                          url="Recipe/SaveMockId"
-                          text="SaveId">
-      </submit-form-button>
-      <button type="button" class="btn btn-primary">Save</button>
-    </modal-footer>
+    <h4>${$view.title} DUPA</h4>
+    <pre text-content.two-way="recipeModel.data | json"></pre>
+    <!--      <pre text-content.bind="model | json"></pre>-->
+    <textbox field.bind="recipeModel.data.name"
+             label="Recipe name"
+             placeholder="Enter name">
+    </textbox>
+    <bvf-textarea field.bind="recipeModel.data.recipe"
+                  label="Recipe">
+    </bvf-textarea>
+    <mas-duration></mas-duration>
+    <submit-form-button data.bind="recipeModel.data"
+                        url="Recipe/SaveRecipe"
+                        text="SaveMock">
+    </submit-form-button>
+    <button type="button" class="btn btn-primary">Save</button>
   </form>
 </template>

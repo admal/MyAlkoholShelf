@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\components\controls\form\mas-duration\mas-duration.ts" />
     <None Remove="ClientApp\app\components\controls\form\submit-form-button\submit-form-button.ts" />
     <None Remove="ClientApp\app\components\controls\form\textbox\textbox.ts" />
     <None Remove="ClientApp\app\components\controls\modal\FormViewModel.ts" />
@@ -49,6 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\controls\form\mas-duration\mas-duration.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\controls\form\submit-form-button\submit-form-button.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\controls\form\bvf-textarea\bvf-textarea.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\controls\form\textbox\textbox.ts" />

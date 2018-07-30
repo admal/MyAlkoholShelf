@@ -18,6 +18,8 @@ export class SubmitFormButton {
     }
 
     submit() {
+        console.log("SUBMIT model", this.data);
+
 //        let requestData: HttpRequestData;
 //        if (this.method == "GET" || this.method == "get") {
 //            requestData = new GetHttpRequestData(this.url, undefined);

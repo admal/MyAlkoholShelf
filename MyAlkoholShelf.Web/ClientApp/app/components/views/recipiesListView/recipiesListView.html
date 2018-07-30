@@ -2,10 +2,9 @@
   <require from="app/components/controls/http/datasource/data-source"></require>
   <require from="app/components/converters/datetime"></require>
   <h1>Moje przepisy</h1>
-  <button class="btn btn-primary"
-          click.trigger="myModal.open()">
+  <a class="btn btn-primary" route-href="route: recipe;">
     Dodaj przepis
-  </button>
+  </a>
   <data-source url="Recipe/GetRecipies"
                method="GET"
                auto-load="true"

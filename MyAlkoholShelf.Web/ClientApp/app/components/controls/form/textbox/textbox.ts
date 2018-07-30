@@ -1,7 +1,7 @@
-﻿import { bindable } from "aurelia-framework";
+﻿import { bindable, bindingMode } from "aurelia-framework";
 
 export class TextboxCustomElement {
-    @bindable field: string;
+    @bindable({ defaultBindingMode: bindingMode.twoWay }) field: string;
     @bindable label: string;
     @bindable placeholder: string;
 }

@@ -1,6 +1,6 @@
-﻿import { bindable } from "aurelia-framework";
+﻿import { bindable, bindingMode } from "aurelia-framework";
 
 export class BvfTextareaCustomElement {
-    @bindable field: string;
+    @bindable({ defaultBindingMode: bindingMode.twoWay }) field: string;
     @bindable label: string;
 }
