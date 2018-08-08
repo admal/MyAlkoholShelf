@@ -9,6 +9,8 @@ using MyAlcoholShelf.Services.Recipies;
 using MyAlcoholShelf.Services.Recipies.Dto;
 using MyAlcoholShelf.Web.Models;
 using MyAlkoholShelf.Entity;
+using MyAlkoholShelf.Web.FrontEndModels;
+using Newtonsoft.Json;
 
 namespace MyAlkoholShelf.Web.Controllers
 {
@@ -51,7 +53,6 @@ namespace MyAlkoholShelf.Web.Controllers
         
         public IActionResult GetAddEditModel(long? recipeId)
         {
-//            [FromQuery(Name = "recipeId")]
         var recipe = new AlkoholRecipeAddEditModel();
             if (recipeId.HasValue)
             {
@@ -60,9 +61,10 @@ namespace MyAlkoholShelf.Web.Controllers
                     .Include(x => x.AlkoholRecipeDefinition)
                     .Include(x => x.Ingredients)
                     .FirstOrDefault();
+
                 recipe.Id = entity.Id;
                 recipe.Name = entity.AlkoholRecipeDefinition.Name;
-                recipe.PreparationTime = entity.PreparationPeriod;
+                recipe.PreparationTime = entity.PreparationPeriod.ToDuration();
                 recipe.Recipe = entity.Recipe;
                 recipe.Ingredients = entity.Ingredients.Select(x => x.Ingredient.Name).ToList();
                 recipe.AdditionalInformation = entity.AdditionalInfo;
@@ -81,30 +83,30 @@ namespace MyAlkoholShelf.Web.Controllers
                 AlkoholRecipeDefinition = model.AlkoholRecipeDefinition,
                 Name = model.Name,
                 Recipe = model.Recipe,
-                AdditionalInformation = model.AdditionalInformation,
-                PreparationTime = model.PreparationTime
+                PreparationTime = model.PreparationTime.ToTimeSpan(),
+                AdditionalInformation = model.AdditionalInformation
             };
             return dto;
         }
 
 
-        public IActionResult SaveRecipe(AlkoholRecipeAddEditModel model)
+        public IActionResult SaveRecipe([FromBody] AlkoholRecipeAddEditModel model)
         {
             if (model.Id.HasValue)
             {
                 _alkoholRecipeService.UpdateRecipe(ModelToDto(model));
-            }
+            }   
             else
             {
                 _alkoholRecipeService.CreateRecipe(ModelToDto(model));
             }
-            return Redirect("Index");
+            return Ok();
         }
 
-        public IActionResult SaveAsNewVersion(AlkoholRecipeAddEditModel model)
+        public IActionResult SaveAsNewVersion([FromBody]AlkoholRecipeAddEditModel model)
         {
             _alkoholRecipeService.SaveAsNewVersionRecipe(ModelToDto(model));
-            return Redirect("Index");
+            return Ok();
         }
 
         public IActionResult DeleteRecipeVersion(long recipeId)

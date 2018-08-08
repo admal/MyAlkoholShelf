@@ -13,21 +13,28 @@
                method="GET">
   </data-source>
   <form>
-    <h4>${$view.title} DUPA</h4>
+    <h4 class="modal-title">${$view.title}</h4>
     <pre text-content.two-way="recipeModel.data | json"></pre>
     <!--      <pre text-content.bind="model | json"></pre>-->
     <textbox field.bind="recipeModel.data.name"
-             label="Recipe name"
-             placeholder="Enter name">
+             label="Nazwa przepisu"
+             placeholder="Wpisz nazwę..."
+             disabled.bind="id != null">
     </textbox>
     <bvf-textarea field.bind="recipeModel.data.recipe"
-                  label="Recipe">
+                  label="Przepis">
     </bvf-textarea>
-    <mas-duration></mas-duration>
+    <mas-duration field.bind="recipeModel.data.preparationTime"
+                  label="Czas leżakowania"></mas-duration>
+    
     <submit-form-button data.bind="recipeModel.data"
                         url="Recipe/SaveRecipe"
-                        text="SaveMock">
+                        text="Zapisz">
     </submit-form-button>
-    <button type="button" class="btn btn-primary">Save</button>
+    <submit-form-button if.bind="id != null"
+                        data.bind="recipeModel.data"
+                        url="Recipe/SaveAsNewVersion"
+                        text="Zapisz jako nową wersję">
+    </submit-form-button>
   </form>
 </template>

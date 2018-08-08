@@ -21,7 +21,6 @@ export class DataSourceCustomElement {
 
 
     attached() {
-
         if (this.autoLoad) {
             this.execute();
         }

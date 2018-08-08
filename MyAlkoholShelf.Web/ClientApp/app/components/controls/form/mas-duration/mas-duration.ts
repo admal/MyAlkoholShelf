@@ -7,6 +7,6 @@ export class MasDurationCustomElement {
 
 export class Duration {
     public days: number;
-    public hours: number;
-    public minutes: number;
+    public months: number;
+    public years: number;
 }

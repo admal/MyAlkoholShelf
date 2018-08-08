@@ -1,24 +1,24 @@
 ﻿<template>
   <require from="./mas-duration.css"></require>
-
+  <label>${label}</label>
   <div class="form-inline">
     <div class="input-group">
       <input type="number"
              class="form-control"
-             value.bind="field.Days" />
-      <div class="input-group-addon">Days</div>
+             value.bind="field.years" />
+      <div class="input-group-addon">Lata</div>
     </div>
     <div class="input-group">
       <input type="number"
              class="form-control"
-             value.bind="field.Hous" />
-      <div class="input-group-addon">Hours</div>
+             value.bind="field.months" />
+      <div class="input-group-addon">Miesiące</div>
     </div>
     <div class="input-group">
       <input type="number"
              class="form-control"
-             value.bind="field.Minutes" />
-      <div class="input-group-addon">Minutes</div>
+             value.bind="field.days" />
+      <div class="input-group-addon">Dni</div>
     </div>
   </div>
 </template>

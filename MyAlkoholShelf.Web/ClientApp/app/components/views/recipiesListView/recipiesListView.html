@@ -32,22 +32,24 @@
           <td colspan="3">
             <table class="table table-bordered">
               <thead>
-                <tr>
-                  <th>Data dodania</th>
-                  <th>Liczba alkoholi</th>
-                  <th></th>
-                </tr>
+              <tr>
+                <th>Lp</th>
+                <th>Data dodania</th>
+                <th>Liczba alkoholi</th>
+                <th></th>
+              </tr>
               </thead>
               <tbody>
-                <tr repeat.for="version of recipeDefinition.versions">
-                  <td>${version.createdTime | datetime}</td>
-                  <td>${version.alkoholCount}</td>
-                  <td>
-                    <a class="btn btn-default" route-href="route: recipe; params.bind:{id: version.id}">
-                      Edycja
-                    </a>
-                  </td>
-                </tr>
+              <tr repeat.for="version of recipeDefinition.versions">
+                <td>${$index + 1}</td>
+                <td>${version.createdTime | datetime}</td>
+                <td>${version.alkoholCount}</td>
+                <td>
+                  <a class="btn btn-default" route-href="route: recipe; params.bind:{id: version.id}">
+                    Edycja
+                  </a>
+                </td>
+              </tr>
               </tbody>
             </table>
           </td>

@@ -4,4 +4,5 @@ export class TextboxCustomElement {
     @bindable({ defaultBindingMode: bindingMode.twoWay }) field: string;
     @bindable label: string;
     @bindable placeholder: string;
+    @bindable disabled: boolean;
 }

@@ -9,7 +9,8 @@ export abstract class HttpRequestData {
     protected constructor(method: string) {
         this.method = method;
         this.headers = {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            'accept': 'application/json'
         }
     }
 
@@ -32,6 +33,8 @@ export class PostHttpRequestData extends HttpRequestData {
 
     setParams(params: any): void {
         this.body = JSON.stringify(params);
+        console.log(this.body);
+
     }
 
     constructor() {

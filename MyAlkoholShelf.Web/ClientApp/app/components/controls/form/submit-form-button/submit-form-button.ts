@@ -1,33 +1,26 @@
-﻿import { HttpClient, json } from "aurelia-fetch-client";
+﻿import { json } from "aurelia-fetch-client";
 import { bindable, inject } from "aurelia-framework";
+import { HttpService } from "app/services/HttpService";
 //import { HttpRequestData, GetHttpRequestData, PostHttpRequestData } from "../../http/datasource/data-source";
 
-@inject(HttpClient)
+@inject(HttpService)
 export class SubmitFormButton {
     @bindable data: any;
     @bindable url: string;
-    @bindable method: string = 'POST';
     @bindable text: string;
-    private _httpClient: HttpClient;
 
-    constructor(http: HttpClient) {
-        this._httpClient = http;
+    constructor(private httpService: HttpService) {
+
     }
 
     bind(bindingContext: any) {
     }
 
     submit() {
+        console.log("URL", this.url);
         console.log("SUBMIT model", this.data);
 
-//        let requestData: HttpRequestData;
-//        if (this.method == "GET" || this.method == "get") {
-//            requestData = new GetHttpRequestData(this.url, undefined);
-//        } else {
-//            requestData = new PostHttpRequestData(this.url, undefined, this.data);
-//        }
-//        this._httpClient.fetch(this.url, requestData)
-//            .then(response => response.json())
-//            .then(data => console.log('reponse', data));
+        this.httpService.makeRequest(this.url, this.data, "POST")
+            .then(response => console.log(response));
     }
 }

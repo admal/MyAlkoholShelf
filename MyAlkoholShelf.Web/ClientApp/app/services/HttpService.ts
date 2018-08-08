@@ -13,7 +13,7 @@ export class HttpService implements IHttpService {
         let requestData = HttpRequestFactory.createRequest(method);
         requestData.setUrl(url);
         requestData.setParams(data);
-
+        console.log("request", JSON.stringify(requestData));
         return this.httpClient.fetch(requestData.url, requestData);
 
     }
