@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MyAlkoholShelf.Entity
 {
+    [Obsolete]
     public class AlkoholRecipe_Ingredient : Entity
     {
         public virtual AlkoholRecipe AlkoholRecipe { get; set; }

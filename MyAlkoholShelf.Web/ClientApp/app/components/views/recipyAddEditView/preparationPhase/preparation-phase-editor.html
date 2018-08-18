@@ -1,0 +1,10 @@
+﻿<template>
+  <require from="app/components/controls/form/mas-duration/mas-duration"></require>
+  <div>
+    <div repeat.for="phase of initialPhases">
+      <span>${phase.name}</span>
+      <span><mas-duration field.bind="phase.phasePeriod"></mas-duration> </span>
+    </div>
+    <button class="btn btn-success" click.trigger="addRow()">Dodaj fazę</button>
+  </div>
+</template>

@@ -7,30 +7,6 @@ export class App {
     configureRouter(config: RouterConfiguration, router: Router) {
         config.title = 'My alkohol shelf';
         config.map([
-//            {
-//                route: ['', 'home'],
-//                name: 'home',
-//                settings: { icon: 'home' },
-//                moduleId: PLATFORM.moduleName('../home/home'),
-//                nav: true,
-//                title: 'Home'
-//            },
-//            {
-//                route: 'counter',
-//                name: 'counter',
-//                settings: { icon: 'education' },
-//                moduleId: PLATFORM.moduleName('../counter/counter'),
-//                nav: true,
-//                title: 'Counter'
-//            },
-//            {
-//                route: 'fetch-data',
-//                name: 'fetchdata',
-//                settings: { icon: 'th-list' },
-//                moduleId: PLATFORM.moduleName('../fetchdata/fetchdata'),
-//                nav: true,
-//                title: 'Przepisy'
-//            },
             {
                 route: ['', 'recipies'],
                 name: 'recipies',
@@ -46,6 +22,14 @@ export class App {
                 moduleId: PLATFORM.moduleName('../views/recipyAddEditView/recipyAddEditView'),
                 nav: false,
                 title: 'Przepis'
+            },
+            {
+                route: 'alkohols',
+                name: 'alkohols',
+                settings: { icon: 'th-list' },
+                moduleId: PLATFORM.moduleName('../views/alkoholsListView/alkoholsListView'),
+                nav: true,
+                title: 'Alkohole'
             }
         ]
         );

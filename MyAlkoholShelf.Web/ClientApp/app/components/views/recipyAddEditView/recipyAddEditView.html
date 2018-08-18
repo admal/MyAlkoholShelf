@@ -5,6 +5,7 @@
   <require from="app/components/controls/http/datasource/data-source"></require>
   <require from="app/components/converters/json"></require>
   <require from="app/components/controls/form/mas-duration/mas-duration"></require>
+  <require from="./preparationPhase/preparation-phase-editor"></require>
 
   <data-source url="Recipe/GetAddEditModel"
                params.bind="{recipeId: id}"
@@ -15,7 +16,6 @@
   <form>
     <h4 class="modal-title">${$view.title}</h4>
     <pre text-content.two-way="recipeModel.data | json"></pre>
-    <!--      <pre text-content.bind="model | json"></pre>-->
     <textbox field.bind="recipeModel.data.name"
              label="Nazwa przepisu"
              placeholder="Wpisz nazwę..."
@@ -25,8 +25,15 @@
                   label="Przepis">
     </bvf-textarea>
     <mas-duration field.bind="recipeModel.data.preparationTime"
-                  label="Czas leżakowania"></mas-duration>
+                  label="Czas leżakowania">
+    </mas-duration>
+
+    <bvf-textarea field.bind="recipeModel.data.additionalInformation"
+                  label="Dodatkowe informacje">
+    </bvf-textarea>
     
+    <preparation-phase-editor></preparation-phase-editor>
+
     <submit-form-button data.bind="recipeModel.data"
                         url="Recipe/SaveRecipe"
                         text="Zapisz">
@@ -36,5 +43,9 @@
                         url="Recipe/SaveAsNewVersion"
                         text="Zapisz jako nową wersję">
     </submit-form-button>
+    <a class="btn btn-info"
+       route-href="route: recipies">
+      Anuluj
+    </a>
   </form>
 </template>

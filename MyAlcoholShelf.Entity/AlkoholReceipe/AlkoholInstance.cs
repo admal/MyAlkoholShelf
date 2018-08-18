@@ -14,6 +14,8 @@ namespace MyAlkoholShelf.Entity
         public DateTime FinishDate => CreatedTime.Add(AlkoholRecipe.PreparationPeriod);
 
         public virtual AlkoholRecipe AlkoholRecipe { get; set; }
+        public virtual AlkoholPreparationPhase CurrentPreparationPhase { get; set; }
+        public virtual long CurrentPreparationPhaseId { get; set; }
     }
 
     public class AlkoholInstanceMapping : EntityClassMapping<AlkoholInstance>
@@ -26,6 +28,8 @@ namespace MyAlkoholShelf.Entity
                 b.Property(x => x.ModifiedTime);
                 b.Property(x => x.Quantity);
                 b.HasOne(x => x.AlkoholRecipe)
+                    .WithMany(x => x.AlkoholInstances);
+                b.HasOne(x => x.CurrentPreparationPhase)
                     .WithMany(x => x.AlkoholInstances);
             });
         }

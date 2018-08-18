@@ -19,11 +19,13 @@ namespace MyAlkoholShelf.Entity
         public virtual string Recipe { get; set; }
         public virtual string AdditionalInfo { get; set; }
 
+        [Obsolete]
         public virtual long PreparationPeriodTicks { get; set; }
         /// <summary>
         /// Ile ma alkohol leżakować
         /// </summary>
         [NotMapped]
+        [Obsolete]
         public virtual TimeSpan PreparationPeriod
         {
             get => TimeSpan.FromTicks(PreparationPeriodTicks);
@@ -34,6 +36,10 @@ namespace MyAlkoholShelf.Entity
         public virtual AlkoholRecipeDefinition AlkoholRecipeDefinition { get; set; }
         public virtual long? AlkoholRecipeDefinitionId { get; set; }
         public virtual ISet<AlkoholInstance> AlkoholInstances { get; set; }
+
+        public virtual ISet<AlkoholPreparationPhase> PreparationPhases { get; set; }
+
+        [Obsolete]
         public virtual ISet<AlkoholRecipe_Ingredient> Ingredients { get; set; }
     }
 
@@ -57,6 +63,8 @@ namespace MyAlkoholShelf.Entity
                 b.HasMany(x => x.AlkoholInstances)
                     .WithOne(x => x.AlkoholRecipe);
                 b.HasMany(x => x.Ingredients)
+                    .WithOne(x => x.AlkoholRecipe);
+                b.HasMany(x => x.PreparationPhases)
                     .WithOne(x => x.AlkoholRecipe);
             });
         }

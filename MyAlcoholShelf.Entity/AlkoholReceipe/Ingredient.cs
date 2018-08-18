@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MyAlkoholShelf.Entity
 {
+    [Obsolete]
     public class Ingredient : UserVersionedEntity
     {
         public virtual string Name { get; set; }
